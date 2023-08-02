@@ -1,10 +1,11 @@
-package com.me.bankingapp.account.controller;
+package com.tanmay.bankingapp.account.controller;
 
-import com.me.bankingapp.account.exception.AccountAlreadyExistsException;
-import com.me.bankingapp.account.exception.AccountNotFoundException;
-import com.me.bankingapp.account.exception.InvalidAccountTypeException;
-import com.me.bankingapp.account.model.Account;
-import com.me.bankingapp.account.service.AccountService;
+import com.tanmay.bankingapp.account.exception.AccountAlreadyExistsException;
+import com.tanmay.bankingapp.account.exception.AccountNotFoundException;
+import com.tanmay.bankingapp.account.exception.InvalidAccountTypeException;
+import com.tanmay.bankingapp.account.model.Account;
+import com.tanmay.bankingapp.account.service.AccountService;
+import com.tanmay.bankingapp.account.TestData;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.stream.Stream;
 
-import static com.me.bankingapp.account.TestData.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -32,9 +32,9 @@ class AccountControllerTest {
 
     private static Stream<Account> testAccounts() {
         return Stream.of(
-                getStudentAccount(),
-                getZeroBalanceAccount(),
-                getRegularSavingsAccount()
+                TestData.getStudentAccount(),
+                TestData.getZeroBalanceAccount(),
+                TestData.getRegularSavingsAccount()
         );
     }
 

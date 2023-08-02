@@ -1,10 +1,10 @@
-package com.me.bankingapp.account;
+package com.tanmay.bankingapp.account;
 
-import com.me.bankingapp.account.model.Account;
+import com.tanmay.bankingapp.account.model.Account;
 
 import java.util.stream.Stream;
 
-import static com.me.bankingapp.account.model.AccountType.*;
+import static com.tanmay.bankingapp.account.model.AccountType.*;
 
 public class TestData {
 

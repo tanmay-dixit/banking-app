@@ -1,12 +1,12 @@
-package com.me.bankingapp.account.service;
+package com.tanmay.bankingapp.account.service;
 
-import com.me.bankingapp.account.exception.AccountAlreadyExistsException;
-import com.me.bankingapp.account.exception.AccountNotFoundException;
-import com.me.bankingapp.account.exception.InvalidAccountTypeException;
-import com.me.bankingapp.account.model.Account;
-import com.me.bankingapp.account.model.AccountType;
-import com.me.bankingapp.account.repository.AccountRepository;
-import com.me.bankingapp.transaction.repository.TransactionRepository;
+import com.tanmay.bankingapp.account.exception.AccountAlreadyExistsException;
+import com.tanmay.bankingapp.account.exception.AccountNotFoundException;
+import com.tanmay.bankingapp.account.exception.InvalidAccountTypeException;
+import com.tanmay.bankingapp.account.model.Account;
+import com.tanmay.bankingapp.account.model.AccountType;
+import com.tanmay.bankingapp.account.repository.AccountRepository;
+import com.tanmay.bankingapp.transaction.repository.TransactionRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,7 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import static com.me.bankingapp.account.TestData.*;
+import static com.tanmay.bankingapp.account.TestData.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;

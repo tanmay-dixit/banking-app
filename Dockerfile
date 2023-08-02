@@ -1,17 +1,11 @@
-# Start with a base image containing Java runtime
-FROM openjdk:17-slim
+# Use official base image of Java Runtime
+FROM openjdk:17-jdk-slim
 
-# Add a volume pointing to /tmp
-VOLUME /tmp
+# The application's .jar file
+ARG JAR_FILE=target/*.jar
 
-# Make port 8080 available to the world outside this container
-EXPOSE 8080
+# Copy the application's .jar to the container
+COPY ${JAR_FILE} app.jar
 
-# The application's jar file
-ARG JAR_FILE=target/product-service-0.0.1-SNAPSHOT.jar
-
-# Add the application's jar to the container
-ADD ${JAR_FILE} product-service.jar
-
-# Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/product-service.jar"]
+# Run the app
+ENTRYPOINT ["java","-jar","/app.jar"]

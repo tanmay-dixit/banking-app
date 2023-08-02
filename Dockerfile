@@ -1,11 +1,18 @@
-# Use official base image of Java Runtime
+FROM maven:3.6.3-openjdk-17-slim AS build
+
+WORKDIR /app
+COPY pom.xml .
+
+RUN mvn dependency:go-offline -B
+
+COPY src /app/src
+
+RUN mvn clean package -DskipTests
+
 FROM openjdk:17-jdk-slim
 
-# The application's .jar file
-ARG JAR_FILE=target/*.jar
+WORKDIR /app
 
-# Copy the application's .jar to the container
-COPY ${JAR_FILE} app.jar
+COPY --from=build /app/target/*.jar /app/app.jar
 
-# Run the app
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app/app.jar"]

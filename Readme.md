@@ -57,3 +57,9 @@ You can access the API documentation at http://localhost:8080/swagger-ui.html wh
 ## Postman collection
 
 The Postman collection containing examples of all API endpoints in attached in the root directory
+
+## Skipped tasks
+The following tasks were skipped due to shortage of time:
+1. Unit tests for Transaction APIs (However, the unit tests for Account APIs have been written comprehensively, and have 92% coverage. The tests for Transaction APIs will be very similar)
+2. regular_saving account, if Average Monthly Balance is less than 10000 will block new transaction - Because writing the SQL query was taking time
+3. Print transaction history. However, this can be easily added to transaction APIs given enough time.

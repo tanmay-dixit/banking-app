@@ -5,6 +5,7 @@ import com.tanmay.bankingapp.account.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.constraints.NotNull;
@@ -42,7 +43,7 @@ public class AccountController {
             @ApiResponse(responseCode = "400", description = "Invalid account type"),
             @ApiResponse(responseCode = "409", description = "Account already exists")
     })
-    public ResponseEntity<Account> createAccount(@PathVariable String accountType,
+    public ResponseEntity<Account> createAccount(@PathVariable @Parameter(description = "Type of account", required = true, examples = @ExampleObject("regular_savings")) String accountType,
                                                  @NotNull @RequestBody Long accountNumber) {
         var newAccount = accountService.createAccount(accountType, accountNumber);
         return ResponseEntity.status(CREATED).body(newAccount);

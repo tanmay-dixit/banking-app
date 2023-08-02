@@ -5,9 +5,6 @@ import com.tanmay.bankingapp.account.exception.AccountNotFoundException;
 import com.tanmay.bankingapp.account.model.Account;
 import com.tanmay.bankingapp.account.model.AccountType;
 import com.tanmay.bankingapp.account.repository.AccountRepository;
-import com.tanmay.bankingapp.transaction.model.Transaction;
-import com.tanmay.bankingapp.transaction.repository.TransactionRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,14 +12,11 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
     private final AccountFactory accountFactory;
-    private final TransactionRepository transactionRepository;
 
     public AccountService(AccountRepository accountRepository,
-                          AccountFactory accountFactory,
-                          TransactionRepository transactionRepository) {
+                          AccountFactory accountFactory) {
         this.accountRepository = accountRepository;
         this.accountFactory = accountFactory;
-        this.transactionRepository = transactionRepository;
     }
 
     public Account retrieveAccount(Long accountNumber) {
@@ -34,20 +28,18 @@ public class AccountService {
         ensureAccountDoesNotExist(accountNumber);
         var accountType = AccountType.fromValue(accountTypeValue);
         var newAccount = accountFactory.createNewAccount(accountType, accountNumber);
-        return accountRepository.save(newAccount);
+        return saveAccount(newAccount);
     }
 
 
     public void updateKyc(Long accountNumber, Boolean newKycStatus) {
         var account = retrieveAccount(accountNumber);
         account.setKycEnabled(newKycStatus);
-        accountRepository.save(account);
+        saveAccount(account);
     }
 
-    @Transactional
-    public void saveAccountAndTransaction(Transaction transaction) {
-        accountRepository.save(transaction.getAccount());
-        transactionRepository.save(transaction);
+    public Account saveAccount(Account account) {
+        return accountRepository.save(account);
     }
 
     private void ensureAccountDoesNotExist(Long accountNumber) {

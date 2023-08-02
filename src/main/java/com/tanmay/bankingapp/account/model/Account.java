@@ -79,13 +79,4 @@ public class Account {
         return Objects.hash(number);
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "number=" + number +
-                ", type=" + type +
-                ", balance=" + balance +
-                ", kycEnabled=" + kycEnabled +
-                '}';
-    }
 }

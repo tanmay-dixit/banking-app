@@ -44,7 +44,7 @@ public class TransactionController {
             @ApiResponse(responseCode = "403", description = "Deposit failed"),
             @ApiResponse(responseCode = "404", description = "Account does not exist")
     })
-    public ResponseEntity<Transaction> createAccount(@RequestBody TransactionRequest request) {
+    public ResponseEntity<Transaction> deposit(@RequestBody TransactionRequest request) {
         var transactionDetails = transactionService.processDepositRequest(request);
         return ResponseEntity.status(CREATED).body(transactionDetails);
     }

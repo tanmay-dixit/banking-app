@@ -1,11 +1,11 @@
 package com.tanmay.bankingapp.account.controller;
 
+import com.tanmay.bankingapp.account.TestData;
 import com.tanmay.bankingapp.account.exception.AccountAlreadyExistsException;
 import com.tanmay.bankingapp.account.exception.AccountNotFoundException;
 import com.tanmay.bankingapp.account.exception.InvalidAccountTypeException;
 import com.tanmay.bankingapp.account.model.Account;
 import com.tanmay.bankingapp.account.service.AccountService;
-import com.tanmay.bankingapp.account.TestData;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

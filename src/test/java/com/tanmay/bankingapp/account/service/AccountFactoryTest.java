@@ -1,7 +1,7 @@
 package com.tanmay.bankingapp.account.service;
 
-import com.tanmay.bankingapp.account.model.Account;
 import com.tanmay.bankingapp.account.TestData;
+import com.tanmay.bankingapp.account.model.Account;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

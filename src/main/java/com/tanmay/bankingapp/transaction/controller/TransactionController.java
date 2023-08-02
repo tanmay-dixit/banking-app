@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,7 @@ public class TransactionController {
             @ApiResponse(responseCode = "403", description = "Withdrawal failed"),
             @ApiResponse(responseCode = "404", description = "Account does not exist")
     })
-    public ResponseEntity<Transaction> withdraw(@RequestBody TransactionRequest request) {
+    public ResponseEntity<Transaction> withdraw(@RequestBody @Valid TransactionRequest request) {
         var transactionDetails = transactionService.processWithdrawalRequest(request);
         return ResponseEntity.status(CREATED).body(transactionDetails);
     }
@@ -44,7 +45,7 @@ public class TransactionController {
             @ApiResponse(responseCode = "403", description = "Deposit failed"),
             @ApiResponse(responseCode = "404", description = "Account does not exist")
     })
-    public ResponseEntity<Transaction> deposit(@RequestBody TransactionRequest request) {
+    public ResponseEntity<Transaction> deposit(@Valid @RequestBody TransactionRequest request) {
         var transactionDetails = transactionService.processDepositRequest(request);
         return ResponseEntity.status(CREATED).body(transactionDetails);
     }

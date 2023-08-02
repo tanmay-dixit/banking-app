@@ -43,7 +43,7 @@ public class AccountController {
             @ApiResponse(responseCode = "400", description = "Invalid account type"),
             @ApiResponse(responseCode = "409", description = "Account already exists")
     })
-    public ResponseEntity<Account> createAccount(@PathVariable @Parameter(description = "Type of account", required = true, examples = @ExampleObject("regular_savings")) String accountType,
+    public ResponseEntity<Account> createAccount(@PathVariable @Parameter(description = "allowed values: {regular_savings, student, zero_balance}", required = true) String accountType,
                                                  @NotNull @RequestBody Long accountNumber) {
         var newAccount = accountService.createAccount(accountType, accountNumber);
         return ResponseEntity.status(CREATED).body(newAccount);
